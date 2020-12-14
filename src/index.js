@@ -11,6 +11,6 @@ import './styles.less'
 
 render(
   // Wrap the <App /> in a provider
-  <App />
-  , document.querySelector('#root')
+  <App />,
+  document.querySelector('#root')
 )
