@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 // 👉 STEP 2 - React Router imports (Route, Link and Switch)
+// Route, Link, Switch are React components from the react-router-dom library
 import { Route, Link, Switch } from 'react-router-dom'
 
 // Components used for the different routes
@@ -29,6 +30,16 @@ export default function App(props) {
         <h1 className='store-header'>Emily&apos;s Trinkets</h1>
         <div className='nav-links'>
           {/* 👉 STEP 3 - Make Links to navigate us Home (`/`) and Shop (`/items-list`) */}
+          <Link to='/'>Home</Link>
+          <Link to='/items-list'>Shop</Link>
+
+          {/* A regular anchor will cause a refresh to the page */}
+          {/* We can use preventDefault() to prevent the reload */}
+          {/* And use pushState on history API to cosmetically modify the URL */}
+          <a onClick={evt => {
+            evt.preventDefault()
+            history.pushState(null, null, '/foo')
+          }} href='/'>Foo</a>
         </div>
       </nav>
 
