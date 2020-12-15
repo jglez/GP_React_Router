@@ -9,6 +9,10 @@ export default function Home() {
 
   const routeToShop = () => {
     // We will use React Router's own version of the history API (useHistory hook)
+    console.log(history)
+    // we use history.push('/foo') instead of history.pushState(null, null, '/bar')
+    // We could navigate the user to different places depending on their authentication status
+    // This is IMPERATIVE code (vs Declarative code using the <Link />)
     history.push('/items-list')
   }
 
