@@ -36,14 +36,26 @@ export default function App(props) {
           {/* A regular anchor will cause a refresh to the page */}
           {/* We can use preventDefault() to prevent the reload */}
           {/* And use pushState on history API to cosmetically modify the URL */}
-          <a onClick={evt => {
+          {/* <a onClick={evt => {
             evt.preventDefault()
             history.pushState(null, null, '/foo')
-          }} href='/'>Foo</a>
+          }} href='/'>Foo</a> */}
         </div>
       </nav>
 
       {/* 👉 STEP 4 - Build a Switch with a Route for each of the components imported at the top */}
+      {/* The home component will render for the '/' and '/items-list paths' */}
+      {/* We need to use the 'exact' prop so Home renders only on the specific path because '/' matches all paths */}
+      {/* Exact is a prop that takes a boolean, but we can leave it blank for true on default */}
+      <Route exact path='/'>
+        <Home />
+      </Route>
+
+      {/* ItemsList component requres a prop, otherwise we will receive the error */}
+      {/* Uncaught TypeError: Cannot read property 'map' of undefined */}
+      <Route path='/items-list'>
+        <ItemsList items={stock} />
+      </Route>
     </div>
   )
 }

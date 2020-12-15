@@ -14,6 +14,7 @@ export default function Home() {
         className='home-image'
         src='https://source.unsplash.com/F6-U5fGAOik'
         alt=''
+      // https://source.unsplash.com/F6-U5fGAOik
       />
       <button
         onClick={routeToShop}
