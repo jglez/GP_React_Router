@@ -45,17 +45,30 @@ export default function App(props) {
 
       {/* 👉 STEP 4 - Build a Switch with a Route for each of the components imported at the top */}
       {/* The home component will render for the '/' and '/items-list paths' */}
+
       {/* We need to use the 'exact' prop so Home renders only on the specific path because '/' matches all paths */}
       {/* Exact is a prop that takes a boolean, but we can leave it blank for true on default */}
-      <Route exact path='/'>
-        <Home />
-      </Route>
 
-      {/* ItemsList component requres a prop, otherwise we will receive the error */}
-      {/* Uncaught TypeError: Cannot read property 'map' of undefined */}
-      <Route path='/items-list'>
-        <ItemsList items={stock} />
-      </Route>
+      <Switch>
+        {/* ItemsList component requres a prop, otherwise we will receive the error: */}
+        {/* Uncaught TypeError: Cannot read property 'map' of undefined */}
+        <Route path='/items-list'>
+          <ItemsList items={stock} />
+        </Route>
+
+        {/* The switch makes it so that the first path to match will render first */}
+        {/* In that case, we would no longer require the 'exact' prop */}
+        {/* because it would always render first */}
+        {/* In other words, the least specific path will be the default path */}
+        <Route exact path='/'>
+          <Home />
+        </Route>
+      </Switch>
+
+      {/* When using Switch, we order our paths by most specific to least specific */}
+      {/**** Alternative Route Syntax: ****/}
+      {/* <Route component={Home} path='/' /> */}
+      {/* <Route render={props => <Home /> path='/' />} */}
     </div>
   )
 }
