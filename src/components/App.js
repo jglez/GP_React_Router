@@ -52,6 +52,11 @@ export default function App(props) {
       <Switch>
         {/* ItemsList component requres a prop, otherwise we will receive the error: */}
         {/* Uncaught TypeError: Cannot read property 'map' of undefined */}
+        <Route path='/items-list/:id'>
+          <Item />
+        </Route>
+
+
         <Route path='/items-list'>
           <ItemsList items={stock} />
         </Route>
