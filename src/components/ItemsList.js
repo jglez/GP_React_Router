@@ -1,9 +1,14 @@
 import React from 'react'
 // We'll need a Link and the useRouteMatch hook from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { useRouteMatch } from 'react-router-dom'
 
 export default function ItemsList(props) {
   const { items } = props
+
+  // Returns an object with useful properties, among them the current URL we are currently on!
+  // This is so we don't have to repeat it in our <Link />s
+  const { url, path } = useRouteMatch()
 
   // We'll grab the current URL using the hook
 
@@ -15,12 +20,13 @@ export default function ItemsList(props) {
           key={item.id}
         >
           {/* 👉 STEP 6 - Link starts, navigates us from <current url> to <current url>/<id of the item> */}
-          <Link to={`/items-list/${item.id}`}>
+          <Link to={`${url}/${item.id}`}>
             <img
               className='items-list-image'
               src={item.imageUrl}
               alt={item.name}
             />
+
             <p>{item.name}</p>
           </Link>
           {/* Link ends */}
